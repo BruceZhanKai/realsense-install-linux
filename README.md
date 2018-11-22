@@ -3,13 +3,21 @@
 ## reference
 
 ### librealsense
+- offical
 - [github install](https://github.com/IntelRealSense/librealsense/blob/master/doc/installation.md)
+- [github distribution linux](https://github.com/IntelRealSense/librealsense/blob/development/doc/distribution_linux.md)
 - [realsense sdk install](https://software.intel.com/sites/products/realsense/sdk/getting_started.html#Installing_the_SDK)
+- issue
 - [Error running RealSense D435 on Ubuntu 16.04(4.4.0-131-generic)](https://stackoverflow.com/questions/51940928/error-running-realsense-d435-on-ubuntu-16-044-4-0-131-generic)
 - [RuntimeError: No device connected](https://github.com/IntelRealSense/librealsense/issues/962)
 - [Realsense D435 install](https://blog.csdn.net/u012177641/article/details/80888578)
 - [Realsense SR300 install](https://blog.csdn.net/z17816876284/article/details/79159518)
 - [github wrapper opencv](https://github.com/IntelRealSense/librealsense/tree/master/wrappers/opencv)
+- skill
+- [About world coordinates of D435 in realsense-viewer](https://github.com/IntelRealSense/librealsense/issues/2317)
+- [Transforming pixel from a depth image to world coordinates](https://github.com/IntelRealSense/librealsense/issues/1904)
+- [How to measure correctly](https://github.com/IntelRealSense/librealsense/issues/1788)
+- [github realsense samples](https://github.com/IntelRealSense/realsense_samples)
 - [Point Cloud Library](http://docs.pointclouds.org/trunk/)
 - [Single Gaussian Background Model 1](http://blog.51cto.com/underthehood/484191)
 - [Single Gaussian Background Model 2](https://blog.csdn.net/jinshengtao/article/details/26278725)
@@ -79,6 +87,9 @@ sudo make install
 ```
 
 ## opencv3.1 install
+
+- [opencv install](https://docs.opencv.org/3.1.0/d7/d9f/tutorial_linux_install.html)
+
 ```
 sudo apt-get install build-essential
 sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
