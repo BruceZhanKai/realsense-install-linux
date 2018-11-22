@@ -21,7 +21,7 @@
 ```
 sudo apt-get install -y build-essential 
 sudo apt-get install -y cmake
-sudo apt install cmake-curses-
+sudo apt install cmake-curses-gui
 sudo apt-get update
 sudo apt-get upgrade 
 sudo apt-get dist-upgrade
@@ -33,9 +33,11 @@ sudo apt-get install gcin
 ```
 ### librealsense
 ```
+sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade
+sudo apt-get install --install-recommends linux-generic-lts-xenial xserver-xorg-core-lts-xenial xserver-xorg-lts-xenial xserver-xorg-video-all-lts-xenial xserver-xorg-input-all-lts-xenial libwayland-egl1-mesa-lts-xenial
+sudo update-grub && sudo reboot
 sudo apt-get install git
 git clone https://github.com/IntelRealSense/librealsense
-sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade
 sudo apt-get install libudev-dev pkg-config libgtk-3-dev
 sudo apt-get install libusb-1.0-0-dev pkg-config
 cd librealsense
