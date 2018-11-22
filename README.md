@@ -4,7 +4,9 @@
 
 ### librealsense
 - [github install](https://github.com/IntelRealSense/librealsense/blob/master/doc/installation.md)
+- [realsense sdk install](https://software.intel.com/sites/products/realsense/sdk/getting_started.html#Installing_the_SDK)
 - [Error running RealSense D435 on Ubuntu 16.04(4.4.0-131-generic)](https://stackoverflow.com/questions/51940928/error-running-realsense-d435-on-ubuntu-16-044-4-0-131-generic)
+- [RuntimeError: No device connected](https://github.com/IntelRealSense/librealsense/issues/962)
 - [Realsense D435 install](https://blog.csdn.net/u012177641/article/details/80888578)
 - [Realsense SR300 install](https://blog.csdn.net/z17816876284/article/details/79159518)
 - [github wrapper opencv](https://github.com/IntelRealSense/librealsense/tree/master/wrappers/opencv)
