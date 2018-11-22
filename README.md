@@ -35,7 +35,7 @@ sudo apt-get update
 sudo apt-get upgrade 
 sudo apt-get dist-upgrade
 sudo add-apt-repository ppa:notepadqq-team/notepadqq
-udo apt-get update
+sudo apt-get update
 sudo apt-get install notepadqq
 sudo apt-get install openssh-server
 sudo apt-get install gcin
