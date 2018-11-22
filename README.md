@@ -2,7 +2,7 @@
 
 ## reference
 
-	librealsense
+### librealsense
 - [github install](https://github.com/IntelRealSense/librealsense/blob/master/doc/installation.md)
 - [Error running RealSense D435 on Ubuntu 16.04(4.4.0-131-generic)](https://stackoverflow.com/questions/51940928/error-running-realsense-d435-on-ubuntu-16-044-4-0-131-generic)
 - [Realsense D435 install](https://blog.csdn.net/u012177641/article/details/80888578)
@@ -15,7 +15,7 @@
 
 ## librealsense install sop
 
-	basic system
+### basic system
 ```
 sudo apt-get install -y build-essential 
 sudo apt-get install -y cmake
@@ -29,7 +29,7 @@ sudo apt-get install notepadqq
 sudo apt-get install openssh-server
 sudo apt-get install gcin
 ```
-	librealsense
+### librealsense
 ```
 sudo apt-get install git
 git clone https://github.com/IntelRealSense/librealsense
@@ -62,7 +62,7 @@ sudo dmesg | tail -n 50
 
 sudo make uninstall && make clean && make && sudo make install
 ```
-## realsense sdk
+## realsense sdk install
 
 ```
 git clone http://github.com/IntelRealSense/realsense_sdk
@@ -74,7 +74,7 @@ make
 sudo make install
 ```
 
-## opencv3.1
+## opencv3.1 install
 ```
 sudo apt-get install build-essential
 sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
