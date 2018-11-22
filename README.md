@@ -14,6 +14,7 @@
 - [Realsense SR300 install](https://blog.csdn.net/z17816876284/article/details/79159518)
 - [github wrapper opencv](https://github.com/IntelRealSense/librealsense/tree/master/wrappers/opencv)
 - skill
+- [Converting depth into 3D world coordinates intel real sense](https://software.intel.com/en-us/forums/realsense/topic/560784)
 - [About world coordinates of D435 in realsense-viewer](https://github.com/IntelRealSense/librealsense/issues/2317)
 - [Transforming pixel from a depth image to world coordinates](https://github.com/IntelRealSense/librealsense/issues/1904)
 - [How to measure correctly](https://github.com/IntelRealSense/librealsense/issues/1788)
