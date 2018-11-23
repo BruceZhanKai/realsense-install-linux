@@ -26,7 +26,7 @@
 
 ## librealsense install sop
 
-### basic system
+### linux system prerequisites
 ```
 sudo apt-get install -y build-essential 
 sudo apt-get install -y cmake
@@ -40,52 +40,121 @@ sudo apt-get install notepadqq
 sudo apt-get install openssh-server
 sudo apt-get install gcin
 ```
+
+### Update linux kernel version 4.16
+
+- [How to Install Kernel 4.16 in Ubuntu / Linux Mint](http://ubuntuhandbook.org/index.php/2018/04/install-kernel-4-16-ubuntu-linux-mint/)
+
+- 1. download Kernel 4.16(.deb)
+- 2. command
+```
+cd /tmp/
+wget -c http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.16/linux-headers-4.16.0-041600_4.16.0-041600.201804012230_all.deb
+wget -c http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.16/linux-headers-4.16.0-041600-generic_4.16.0-041600.201804012230_amd64.deb
+wget -c http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.16/linux-image-4.16.0-041600-generic_4.16.0-041600.201804012230_amd64.deb
+sudo dpkg -i *.deb
+```
+
+### realsense sdk
+
+- [Linux Distribution](https://github.com/IntelRealSense/librealsense/blob/master/doc/distribution_linux.md#linux-distribution)
+
+```
+sudo apt-key adv --keyserver keys.gnupg.net --recv-key C8B3A55A6F3EFCDE || sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key C8B3A55A6F3EFCDE
+sudo add-apt-repository "deb http://realsense-hw-public.s3.amazonaws.com/Debian/apt-repo xenial main" -u
+sudo rm -f /etc/apt/sources.list.d/realsense-public.list
+sudo apt-get update
+sudo apt-get install librealsense2-dkms
+sudo apt-get install librealsense2-utils
+sudo apt-get install librealsense2-dev
+sudo apt-get install librealsense2-dbg
+modinfo uvcvideo | grep "version:"
+-> should include realsense string
+```
+
 ### librealsense
+
+- [Linux Ubuntu Installation](https://github.com/IntelRealSense/librealsense/blob/master/doc/installation.md)
+- 1. command - prerequisites 1
 ```
 sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade
 sudo apt-get install --install-recommends linux-generic-lts-xenial xserver-xorg-core-lts-xenial xserver-xorg-lts-xenial xserver-xorg-video-all-lts-xenial xserver-xorg-input-all-lts-xenial libwayland-egl1-mesa-lts-xenial
 sudo update-grub && sudo reboot
-sudo apt-get install git
-git clone https://github.com/IntelRealSense/librealsense
-sudo apt-get install libudev-dev pkg-config libgtk-3-dev
-sudo apt-get install libusb-1.0-0-dev pkg-config
-cd librealsense
-mkdir build && cd build
-cmake ../ -DBUILD_EXAMPLES=true
+uname -r
+->verify that a supported kernel version (4.[4,8,10,13,15,16]]) 
 ```
-```
-cd ~/librealsense/
-sudo cp config/99-realsense-libusb.rules /etc/udev/rules.d
-sudo udevadm control --reload-rules && udevadm trigger
-sudo apt-get install libssl-dev
-./scripts/patch-realsense-ubuntu-xenial.sh
-./scripts/patch-arch.sh
-./scripts/install_glfw3.sh
-./scripts/install_dependencies-4.4.sh
-./scripts/patch-uvcvideo-4.4.sh v4.4-wily
-sudo modprobe uvcvideo
-sudo udevadm control --reload-rules && udevadm trigger
+- 2. download github repository
+- [Intel® RealSense™ SDK 2.0 (build 2.16.5)](https://github.com/IntelRealSense/librealsense/releases/tag/v2.16.5)
 
-./scripts/patch-realsense-ubuntu-lts.sh
+- 3. command - prerequisites 2
+```
+sudo apt-get install git libssl-dev libusb-1.0-0-dev pkg-config libgtk-3-dev
+sudo apt-get install libglfw3-dev
+sudo cp config/99-realsense-libusb.rules /etc/udev/rules.d/
+sudo udevadm control --reload-rules && udevadm trigger
 ./scripts/patch-ubuntu-kernel-4.16.sh
-```
-
-```
+cd ./scripts/
+./patch-arch.sh
+-> somewhere fail like
+-> HTTP request sent, awaiting response... 404 Not Found
+-> 2018-11-23 18:42:12 ERROR 404: Not Found.
+-> [[[[[[but it's fine]]]]]]
 sudo dmesg | tail -n 50
+-> The log should indicate that a new uvcvideo driver has been registered.
+echo 'hid_sensor_custom' | sudo tee -a /etc/modules
+```
+- 4. building librealsense2 SDK
+```
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo apt-get update
+sudo apt-get install gcc-5 g++-5
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 60 --slave /usr/bin/g++ g++ /usr/bin/g++-5
+sudo update-alternatives --set gcc "/usr/bin/gcc-5"
+gcc -v
+-> you should see gcc 5.0.0 or upper
+mkdir build && cd build
+cmake ../ -DCMAKE_BUILD_TYPE=Release -DBUILD_EXAMPLES=true -DBUILD_GRAPHICAL_EXAMPLES=false
+sudo make uninstall && make clean && make -j8 && sudo make install
+```
+- 5. try realsense-viewer
 
-sudo make uninstall && make clean && make && sudo make install
 ```
-## realsense sdk install
+realsense-viewer
+```
+
+### Device Firmware Update (DFU) for Linux
+
+- 1. download Latest Firmware for Intel® RealSense™ D400 Product Family
+- [Latest Firmware for Intel® RealSense™ D400 Product Family](https://downloadcenter.intel.com/download/28237/Latest-Firmware-for-Intel-RealSense-D400-Product-Family?v=t)
+- 2. command
+```
+echo 'deb http://realsense-hw-public.s3.amazonaws.com/Debian/aptrepo xenial main' | sudo tee /etc/apt/sources.list.d/realsensepublic.list
+sudo apt-key adv --keyserver keys.gnupg.net --recv-key 6F3EFCDE
+sudo apt-get update
+sudo apt-get install intel-realsense-dfu*
+lsusb
+-> get bus number & device number form Intel Corp., like bus=002, device=003
+-> Bus 002 Device 003: ID 8086:0b07 Intel Corp. 
+-> Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+-> Bus 001 Device 003: ID 17ef:6099 Lenovo 
+-> Bus 001 Device 002: ID 17ef:608d Lenovo 
+-> Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+intel-realsense-dfu -b 002 -d 003 -f -i /home/ubuntu/Downloads/Signed_Image_UVC_5_10_6_0.bin
 
 ```
-git clone http://github.com/IntelRealSense/realsense_sdk
-cd realsense_sdk
-mkdir build
-cd build
-cmake ..
-make
-sudo make install
+
+
+## TODO
+
+- 1. command "realsense-viewer" then show
+
 ```
+23/11 19:25:45,239 WARNING [140063559751424] (sensor.cpp:338) Unregistered Media formats : [ UYVY ]; Supported: [ ]
+23/11 19:25:45,246 WARNING [140063559751424] (backend-v4l2.cpp:1248) Pixel format 36315752-1a66-a242-9065-d01814a likely requires patch for fourcc code RW16!
+23/11 19:25:45,246 WARNING [140063559751424] (sensor.cpp:338) Unregistered Media formats : [ RW16 ]; Supported: [ ]
+23/11 19:25:45,363 ERROR [140063859575360] (tm-context.cpp:34) Failed to create TrackingManager
+```
+
 
 ## opencv3.1 install
 
@@ -104,3 +173,54 @@ cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local ..
 make -j7
 sudo make install
 ```
+
+## issue
+
+### librealsense
+
+- 0)Command
+- ./scripts/patch-realsense-ubuntu-lts.sh
+- 1)Problem
+```
+Applying the patched module ... modprobe: ERROR: could not insert 'videodev': Required key not available
+Failed to insert the patched module. Operation is aborted, the original module is restored
+Verify that the current kernel version is aligned to the patched module version
+modprobe: ERROR: could not insert 'videodev': Required key not available
+```
+- 2)Use
+- [installation qestion ------ could not insert 'videodev'](https://github.com/IntelRealSense/librealsense/issues/1225)
+```
+uname -r
+sudo dmesg | tail -n 50
+
+sudo apt-get install realsense-uvcvideo
+```
+- 3)Problem
+```
+Replacing videodev :
+Applying the patched module ... modprobe: ERROR: could not insert 'videodev': Required key not available
+Failed to insert the patched module. Operation is aborted, the original module is restored
+Verify that the current kernel version is aligned to the patched module version
+modprobe: ERROR: could not insert 'videodev': Required key not available
+```
+- 
+- 0)Command
+- ./build/examples/capture/rs-capture
+- 1)Problem
+```
+22/11 17:59:46,185 ERROR [139842681517888] (backend-v4l2.cpp:518) 
+Cannot access /sys/class/video4linux
+```
+- 2)Use
+- [Cannot access /sys/class/video4linux](https://github.com/IntelRealSense/librealsense/issues/2747)
+
+
+
+
+
+
+
+
+
+
+
