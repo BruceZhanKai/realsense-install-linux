@@ -3,17 +3,17 @@
 ## reference
 
 ### librealsense
-- offical
+1. offical
 - [github install](https://github.com/IntelRealSense/librealsense/blob/master/doc/installation.md)
 - [github distribution linux](https://github.com/IntelRealSense/librealsense/blob/development/doc/distribution_linux.md)
 - [realsense sdk install](https://software.intel.com/sites/products/realsense/sdk/getting_started.html#Installing_the_SDK)
-- issue
+2. issue
 - [Error running RealSense D435 on Ubuntu 16.04(4.4.0-131-generic)](https://stackoverflow.com/questions/51940928/error-running-realsense-d435-on-ubuntu-16-044-4-0-131-generic)
 - [RuntimeError: No device connected](https://github.com/IntelRealSense/librealsense/issues/962)
 - [Realsense D435 install](https://blog.csdn.net/u012177641/article/details/80888578)
 - [Realsense SR300 install](https://blog.csdn.net/z17816876284/article/details/79159518)
 - [github wrapper opencv](https://github.com/IntelRealSense/librealsense/tree/master/wrappers/opencv)
-- skill
+3. 	skill
 - [Converting depth into 3D world coordinates intel real sense](https://software.intel.com/en-us/forums/realsense/topic/560784)
 - [About world coordinates of D435 in realsense-viewer](https://github.com/IntelRealSense/librealsense/issues/2317)
 - [Transforming pixel from a depth image to world coordinates](https://github.com/IntelRealSense/librealsense/issues/1904)
@@ -49,8 +49,8 @@ sudo gdebi XnViewMP-linux-x64.deb
 
 - [How to Install Kernel 4.16 in Ubuntu / Linux Mint](http://ubuntuhandbook.org/index.php/2018/04/install-kernel-4-16-ubuntu-linux-mint/)
 
-- 1. download Kernel 4.16(.deb)
-- 2. command
+1. download Kernel 4.16(.deb)
+2. command
 ```
 cd /tmp/
 wget -c http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.16/linux-headers-4.16.0-041600_4.16.0-041600.201804012230_all.deb
@@ -79,7 +79,7 @@ modinfo uvcvideo | grep "version:"
 ### librealsense
 
 - [Linux Ubuntu Installation](https://github.com/IntelRealSense/librealsense/blob/master/doc/installation.md)
-- 1. command - prerequisites 1
+1. command - prerequisites 1
 ```
 sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade
 sudo apt-get install --install-recommends linux-generic-lts-xenial xserver-xorg-core-lts-xenial xserver-xorg-lts-xenial xserver-xorg-video-all-lts-xenial xserver-xorg-input-all-lts-xenial libwayland-egl1-mesa-lts-xenial
@@ -87,10 +87,10 @@ sudo update-grub && sudo reboot
 uname -r
 ->verify that a supported kernel version (4.[4,8,10,13,15,16]]) 
 ```
-- 2. download github repository
+2. download github repository
 - [Intel® RealSense™ SDK 2.0 (build 2.16.5)](https://github.com/IntelRealSense/librealsense/releases/tag/v2.16.5)
 
-- 3. command - prerequisites 2
+3. command - prerequisites 2
 ```
 sudo apt-get install git libssl-dev libusb-1.0-0-dev pkg-config libgtk-3-dev
 sudo apt-get install libglfw3-dev
@@ -107,7 +107,7 @@ sudo dmesg | tail -n 50
 -> The log should indicate that a new uvcvideo driver has been registered.
 echo 'hid_sensor_custom' | sudo tee -a /etc/modules
 ```
-- 4. building librealsense2 SDK
+4. building librealsense2 SDK
 ```
 sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 sudo apt-get update
@@ -117,10 +117,10 @@ sudo update-alternatives --set gcc "/usr/bin/gcc-5"
 gcc -v
 -> you should see gcc 5.0.0 or upper
 mkdir build && cd build
-cmake ../ -DCMAKE_BUILD_TYPE=Release -DBUILD_EXAMPLES=true -DBUILD_GRAPHICAL_EXAMPLES=false
+cmake ../ -DCMAKE_BUILD_TYPE=Release -DBUILD_EXAMPLES=true -DBUILD_GRAPHICAL_EXAMPLES=false -DBUILD_CV_EXAMPLES=true
 sudo make uninstall && make clean && make -j8 && sudo make install
 ```
-- 5. try realsense-viewer
+5. try realsense-viewer
 
 ```
 realsense-viewer
@@ -128,9 +128,9 @@ realsense-viewer
 
 ### Device Firmware Update (DFU) for Linux
 
-- 1. download Latest Firmware for Intel® RealSense™ D400 Product Family
+1. download Latest Firmware for Intel® RealSense™ D400 Product Family
 - [Latest Firmware for Intel® RealSense™ D400 Product Family](https://downloadcenter.intel.com/download/28237/Latest-Firmware-for-Intel-RealSense-D400-Product-Family?v=t)
-- 2. command
+2. command
 ```
 echo 'deb http://realsense-hw-public.s3.amazonaws.com/Debian/aptrepo xenial main' | sudo tee /etc/apt/sources.list.d/realsensepublic.list
 sudo apt-key adv --keyserver keys.gnupg.net --recv-key 6F3EFCDE
@@ -150,7 +150,7 @@ intel-realsense-dfu -b 002 -d 003 -f -i /home/ubuntu/Downloads/Signed_Image_UVC_
 
 ### example testing
 
-- 1. command "realsense-viewer" then show
+1. command "realsense-viewer" then show
 
 ```
 23/11 19:25:45,239 WARNING [140063559751424] (sensor.cpp:338) Unregistered Media formats : [ UYVY ]; Supported: [ ]
@@ -159,32 +159,43 @@ intel-realsense-dfu -b 002 -d 003 -f -i /home/ubuntu/Downloads/Signed_Image_UVC_
 23/11 19:25:45,363 ERROR [140063859575360] (tm-context.cpp:34) Failed to create TrackingManager
 --> it's fine
 ```
-- 2. command "rs-capture" then success
+2. command "rs-capture" then success
 
 ![rs-capture](https://github.com/BruceZhanKai/realsense-install-linux/blob/master/images/rs-capture.png "rs-capture-result")
 
 ## TODO 
 
 
-### opencv3.1 install 
+### opencv3.4 install (better install before librealsense)
 
-- [opencv install](https://docs.opencv.org/3.1.0/d7/d9f/tutorial_linux_install.html)
+- [opencv wrapper](https://github.com/IntelRealSense/librealsense/tree/master/wrappers/opencv#linux)
+
+1. bild `opencv` from source using the [official guide](https://docs.opencv.org/trunk/d7/d9f/tutorial_linux_install.html)
+> Please use `git checkout 3.4` to use version 3.4
+2. Run `export OpenCV_DIR=~/opencv/build` (`~/opencv/build` is the folder containing `OpenCVConfig.cmake`)
+3. Follow [the instructions](https://github.com/IntelRealSense/librealsense/blob/master/doc/installation.md) to build `librealsense` from source
+4. Add `-DBUILD_CV_EXAMPLES=true` to your `cmake` command
+
 
 ```
 sudo apt-get install build-essential
 sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
 sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
 git clone https://github.com/Itseez/opencv.git
+git checkout 3.4
 
 cd ~/opencv
 mkdir build
 cd build
 cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local ..
-make -j7
+make -j8
 sudo make install
 ```
 
-### Source 
+### C++ sample code 
+
+- [C++ sample code](https://github.com/IntelRealSense/librealsense/tree/master/examples)
+
 
 ```
 
@@ -194,16 +205,16 @@ sudo make install
 
 ### librealsense
 
-- 1. Command
+1. Command
 - ./scripts/patch-realsense-ubuntu-lts.sh
-- 2. Problem
+2. Problem
 ```
 Applying the patched module ... modprobe: ERROR: could not insert 'videodev': Required key not available
 Failed to insert the patched module. Operation is aborted, the original module is restored
 Verify that the current kernel version is aligned to the patched module version
 modprobe: ERROR: could not insert 'videodev': Required key not available
 ```
-- 3. Use
+3. Use
 - [installation qestion ------ could not insert 'videodev'](https://github.com/IntelRealSense/librealsense/issues/1225)
 ```
 uname -r
@@ -211,7 +222,7 @@ sudo dmesg | tail -n 50
 
 sudo apt-get install realsense-uvcvideo
 ```
-- 4. Problem
+4. Problem
 ```
 Replacing videodev :
 Applying the patched module ... modprobe: ERROR: could not insert 'videodev': Required key not available
@@ -220,14 +231,14 @@ Verify that the current kernel version is aligned to the patched module version
 modprobe: ERROR: could not insert 'videodev': Required key not available
 ```
 - 
-- 1. Command
+1. Command
 - ./build/examples/capture/rs-capture
-- 1)Problem
+2. Problem
 ```
 22/11 17:59:46,185 ERROR [139842681517888] (backend-v4l2.cpp:518) 
 Cannot access /sys/class/video4linux
 ```
-- 2. Use
+3. Use
 - [Cannot access /sys/class/video4linux](https://github.com/IntelRealSense/librealsense/issues/2747)
 
 
