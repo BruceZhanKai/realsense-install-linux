@@ -194,16 +194,16 @@ sudo make install
 
 ### librealsense
 
-- 0)Command
+- 1. Command
 - ./scripts/patch-realsense-ubuntu-lts.sh
-- 1)Problem
+- 2. Problem
 ```
 Applying the patched module ... modprobe: ERROR: could not insert 'videodev': Required key not available
 Failed to insert the patched module. Operation is aborted, the original module is restored
 Verify that the current kernel version is aligned to the patched module version
 modprobe: ERROR: could not insert 'videodev': Required key not available
 ```
-- 2)Use
+- 3. Use
 - [installation qestion ------ could not insert 'videodev'](https://github.com/IntelRealSense/librealsense/issues/1225)
 ```
 uname -r
@@ -211,7 +211,7 @@ sudo dmesg | tail -n 50
 
 sudo apt-get install realsense-uvcvideo
 ```
-- 3)Problem
+- 4. Problem
 ```
 Replacing videodev :
 Applying the patched module ... modprobe: ERROR: could not insert 'videodev': Required key not available
@@ -220,14 +220,14 @@ Verify that the current kernel version is aligned to the patched module version
 modprobe: ERROR: could not insert 'videodev': Required key not available
 ```
 - 
-- 0)Command
+- 1. Command
 - ./build/examples/capture/rs-capture
 - 1)Problem
 ```
 22/11 17:59:46,185 ERROR [139842681517888] (backend-v4l2.cpp:518) 
 Cannot access /sys/class/video4linux
 ```
-- 2)Use
+- 2. Use
 - [Cannot access /sys/class/video4linux](https://github.com/IntelRealSense/librealsense/issues/2747)
 
 
