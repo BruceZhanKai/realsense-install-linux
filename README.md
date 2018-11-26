@@ -39,6 +39,10 @@ sudo apt-get update
 sudo apt-get install notepadqq
 sudo apt-get install openssh-server
 sudo apt-get install gcin
+
+sudo apt-get install gdebi
+wget http://download.xnview.com/XnViewMP-linux-x64.deb
+sudo gdebi XnViewMP-linux-x64.deb
 ```
 
 ### Update linux kernel version 4.16
@@ -144,7 +148,7 @@ intel-realsense-dfu -b 002 -d 003 -f -i /home/ubuntu/Downloads/Signed_Image_UVC_
 ```
 
 
-## TODO
+## example testing
 
 - 1. command "realsense-viewer" then show
 
@@ -153,7 +157,9 @@ intel-realsense-dfu -b 002 -d 003 -f -i /home/ubuntu/Downloads/Signed_Image_UVC_
 23/11 19:25:45,246 WARNING [140063559751424] (backend-v4l2.cpp:1248) Pixel format 36315752-1a66-a242-9065-d01814a likely requires patch for fourcc code RW16!
 23/11 19:25:45,246 WARNING [140063559751424] (sensor.cpp:338) Unregistered Media formats : [ RW16 ]; Supported: [ ]
 23/11 19:25:45,363 ERROR [140063859575360] (tm-context.cpp:34) Failed to create TrackingManager
+--> it's fine
 ```
+- 2. command "rs-capture" then success
 
 
 ## opencv3.1 install
