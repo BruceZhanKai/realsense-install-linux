@@ -148,7 +148,7 @@ intel-realsense-dfu -b 002 -d 003 -f -i /home/ubuntu/Downloads/Signed_Image_UVC_
 ```
 
 
-## example testing
+### example testing
 
 - 1. command "realsense-viewer" then show
 
@@ -161,8 +161,12 @@ intel-realsense-dfu -b 002 -d 003 -f -i /home/ubuntu/Downloads/Signed_Image_UVC_
 ```
 - 2. command "rs-capture" then success
 
+![rs-capture](https://github.com/BruceZhanKai/realsense-install-linux/blob/master/images/rs-capture.png "rs-capture-result")
 
-## opencv3.1 install
+## TODO 
+
+
+### opencv3.1 install 
 
 - [opencv install](https://docs.opencv.org/3.1.0/d7/d9f/tutorial_linux_install.html)
 
@@ -178,6 +182,12 @@ cd build
 cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local ..
 make -j7
 sudo make install
+```
+
+### Source 
+
+```
+
 ```
 
 ## issue
