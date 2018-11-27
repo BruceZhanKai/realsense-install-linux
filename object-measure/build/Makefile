@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ubuntu/github/realsense-install-linux/object-detect
+CMAKE_SOURCE_DIR = /home/ubuntu/github/realsense-install-linux/object-measure
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ubuntu/github/realsense-install-linux/object-detect/build
+CMAKE_BINARY_DIR = /home/ubuntu/github/realsense-install-linux/object-measure/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/github/realsense-install-linux/object-detect/build/CMakeFiles /home/ubuntu/github/realsense-install-linux/object-detect/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/github/realsense-install-linux/object-measure/build/CMakeFiles /home/ubuntu/github/realsense-install-linux/object-measure/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/github/realsense-install-linux/object-detect/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/github/realsense-install-linux/object-measure/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,44 +111,44 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named object-detect
+# Target rules for targets named object-measure
 
 # Build rule for target.
-object-detect: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 object-detect
-.PHONY : object-detect
+object-measure: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 object-measure
+.PHONY : object-measure
 
 # fast build rule for target.
-object-detect/fast:
-	$(MAKE) -f CMakeFiles/object-detect.dir/build.make CMakeFiles/object-detect.dir/build
-.PHONY : object-detect/fast
+object-measure/fast:
+	$(MAKE) -f CMakeFiles/object-measure.dir/build.make CMakeFiles/object-measure.dir/build
+.PHONY : object-measure/fast
 
-object-detect.o: object-detect.cpp.o
+object-measure.o: object-measure.cpp.o
 
-.PHONY : object-detect.o
+.PHONY : object-measure.o
 
 # target to build an object file
-object-detect.cpp.o:
-	$(MAKE) -f CMakeFiles/object-detect.dir/build.make CMakeFiles/object-detect.dir/object-detect.cpp.o
-.PHONY : object-detect.cpp.o
+object-measure.cpp.o:
+	$(MAKE) -f CMakeFiles/object-measure.dir/build.make CMakeFiles/object-measure.dir/object-measure.cpp.o
+.PHONY : object-measure.cpp.o
 
-object-detect.i: object-detect.cpp.i
+object-measure.i: object-measure.cpp.i
 
-.PHONY : object-detect.i
+.PHONY : object-measure.i
 
 # target to preprocess a source file
-object-detect.cpp.i:
-	$(MAKE) -f CMakeFiles/object-detect.dir/build.make CMakeFiles/object-detect.dir/object-detect.cpp.i
-.PHONY : object-detect.cpp.i
+object-measure.cpp.i:
+	$(MAKE) -f CMakeFiles/object-measure.dir/build.make CMakeFiles/object-measure.dir/object-measure.cpp.i
+.PHONY : object-measure.cpp.i
 
-object-detect.s: object-detect.cpp.s
+object-measure.s: object-measure.cpp.s
 
-.PHONY : object-detect.s
+.PHONY : object-measure.s
 
 # target to generate assembly for a file
-object-detect.cpp.s:
-	$(MAKE) -f CMakeFiles/object-detect.dir/build.make CMakeFiles/object-detect.dir/object-detect.cpp.s
-.PHONY : object-detect.cpp.s
+object-measure.cpp.s:
+	$(MAKE) -f CMakeFiles/object-measure.dir/build.make CMakeFiles/object-measure.dir/object-measure.cpp.s
+.PHONY : object-measure.cpp.s
 
 # Help Target
 help:
@@ -157,11 +157,11 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... object-detect"
+	@echo "... object-measure"
 	@echo "... rebuild_cache"
-	@echo "... object-detect.o"
-	@echo "... object-detect.i"
-	@echo "... object-detect.s"
+	@echo "... object-measure.o"
+	@echo "... object-measure.i"
+	@echo "... object-measure.s"
 .PHONY : help
 
 

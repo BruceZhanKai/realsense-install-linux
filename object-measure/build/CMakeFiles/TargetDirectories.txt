@@ -1,0 +1,3 @@
+/home/ubuntu/github/realsense-install-linux/object-measure/build/CMakeFiles/edit_cache.dir
+/home/ubuntu/github/realsense-install-linux/object-measure/build/CMakeFiles/object-measure.dir
+/home/ubuntu/github/realsense-install-linux/object-measure/build/CMakeFiles/rebuild_cache.dir

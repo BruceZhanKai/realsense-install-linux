@@ -1,7 +1,3 @@
-/home/ubuntu/github/realsense-install-linux/object-detect/build/CMakeFiles/rebuild_cache.dir
-/home/ubuntu/github/realsense-install-linux/object-detect/build/CMakeFiles/install/strip.dir
-/home/ubuntu/github/realsense-install-linux/object-detect/build/CMakeFiles/object-detect.dir
-/home/ubuntu/github/realsense-install-linux/object-detect/build/CMakeFiles/install.dir
-/home/ubuntu/github/realsense-install-linux/object-detect/build/CMakeFiles/install/local.dir
-/home/ubuntu/github/realsense-install-linux/object-detect/build/CMakeFiles/list_install_components.dir
 /home/ubuntu/github/realsense-install-linux/object-detect/build/CMakeFiles/edit_cache.dir
+/home/ubuntu/github/realsense-install-linux/object-detect/build/CMakeFiles/object-detect.dir
+/home/ubuntu/github/realsense-install-linux/object-detect/build/CMakeFiles/rebuild_cache.dir

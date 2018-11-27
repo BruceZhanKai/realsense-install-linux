@@ -90,23 +90,23 @@ object__detect_EXTERNAL_OBJECTS =
 
 object-detect: CMakeFiles/object-detect.dir/object-detect.cpp.o
 object-detect: CMakeFiles/object-detect.dir/build.make
-object-detect: /home/ubuntu/github/opencv/build/lib/libopencv_videostab.so.3.4.4
-object-detect: /home/ubuntu/github/opencv/build/lib/libopencv_objdetect.so.3.4.4
-object-detect: /home/ubuntu/github/opencv/build/lib/libopencv_ml.so.3.4.4
-object-detect: /home/ubuntu/github/opencv/build/lib/libopencv_photo.so.3.4.4
-object-detect: /home/ubuntu/github/opencv/build/lib/libopencv_superres.so.3.4.4
-object-detect: /home/ubuntu/github/opencv/build/lib/libopencv_stitching.so.3.4.4
-object-detect: /home/ubuntu/github/opencv/build/lib/libopencv_dnn.so.3.4.4
-object-detect: /home/ubuntu/github/opencv/build/lib/libopencv_shape.so.3.4.4
-object-detect: /home/ubuntu/github/opencv/build/lib/libopencv_calib3d.so.3.4.4
-object-detect: /home/ubuntu/github/opencv/build/lib/libopencv_features2d.so.3.4.4
-object-detect: /home/ubuntu/github/opencv/build/lib/libopencv_flann.so.3.4.4
-object-detect: /home/ubuntu/github/opencv/build/lib/libopencv_highgui.so.3.4.4
-object-detect: /home/ubuntu/github/opencv/build/lib/libopencv_videoio.so.3.4.4
-object-detect: /home/ubuntu/github/opencv/build/lib/libopencv_imgcodecs.so.3.4.4
-object-detect: /home/ubuntu/github/opencv/build/lib/libopencv_video.so.3.4.4
-object-detect: /home/ubuntu/github/opencv/build/lib/libopencv_imgproc.so.3.4.4
-object-detect: /home/ubuntu/github/opencv/build/lib/libopencv_core.so.3.4.4
+object-detect: /usr/local/lib/libopencv_videostab.so.3.4.4
+object-detect: /usr/local/lib/libopencv_objdetect.so.3.4.4
+object-detect: /usr/local/lib/libopencv_ml.so.3.4.4
+object-detect: /usr/local/lib/libopencv_photo.so.3.4.4
+object-detect: /usr/local/lib/libopencv_superres.so.3.4.4
+object-detect: /usr/local/lib/libopencv_stitching.so.3.4.4
+object-detect: /usr/local/lib/libopencv_dnn.so.3.4.4
+object-detect: /usr/local/lib/libopencv_shape.so.3.4.4
+object-detect: /usr/local/lib/libopencv_calib3d.so.3.4.4
+object-detect: /usr/local/lib/libopencv_features2d.so.3.4.4
+object-detect: /usr/local/lib/libopencv_flann.so.3.4.4
+object-detect: /usr/local/lib/libopencv_highgui.so.3.4.4
+object-detect: /usr/local/lib/libopencv_videoio.so.3.4.4
+object-detect: /usr/local/lib/libopencv_imgcodecs.so.3.4.4
+object-detect: /usr/local/lib/libopencv_video.so.3.4.4
+object-detect: /usr/local/lib/libopencv_imgproc.so.3.4.4
+object-detect: /usr/local/lib/libopencv_core.so.3.4.4
 object-detect: CMakeFiles/object-detect.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubuntu/github/realsense-install-linux/object-detect/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable object-detect"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/object-detect.dir/link.txt --verbose=$(VERBOSE)

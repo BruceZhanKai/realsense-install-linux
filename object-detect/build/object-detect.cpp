@@ -7,27 +7,33 @@
  #include "opencv2/opencv.hpp"
 using namespace std;
 using namespace cv;
-void mask_depth(Mat &image,Mat& th,int throld=1000)
+void mask_depth(Mat &image,int throld=1000)
 {
-int nr = image.rows; // number of rows 
-int nc = image.cols; // number of columns 
-for (int i = 0; i<nr; i++)
-{
- 
-for (int j = 0; j<nc; j++) {
-if (image.at<ushort>(i, j)>throld)
-th.at<ushort>(i, j) = 0;
-}
-}
- 
+	cout<<"image="<<image.size()<<endl;
+	int nr = image.rows; // number of rows 
+	int nc = image.cols; // number of columns 
+	cout<<"image.rows="<<image.rows<<endl;
+	cout<<"image.cols="<<image.cols<<endl;
+	int count=0;
+	for (int i = 0; i<nr; i++)
+	{
+		for (int j = 0; j<nc; j++) 
+		{
+			if (image.at<ushort>(i, j)>throld)
+				image.at<ushort>(i, j) = 0;
+			count++;
+		}
+	}
+	cout<<"count="<<count<<endl;
+	cin.get();
 }
 vector<vector<Point> > find_obstacle(Mat &depth, int thresh = 20, int max_thresh = 255, int area = 500)
 {
 	Mat dep;
 	depth.copyTo(dep);
-	mask_depth(depth, dep, 1000);
-	dep.convertTo(dep, CV_8UC1, 1.0 / 16);
-	//imshow("color", color);
+	mask_depth(dep, 10);
+	dep.convertTo(dep, CV_8UC1,1.0/16);
+	imshow("color", depth);
 	imshow("depth", dep);
 	Mat element = getStructuringElement(MORPH_RECT, Size(15, 15));//核的大小可适当调整
 	Mat out;
@@ -42,8 +48,12 @@ vector<vector<Point> > find_obstacle(Mat &depth, int thresh = 20, int max_thresh
 	vector<vector<Point> > contours;
 	vector<Vec4i> hierarchy;
 	RNG rng(12345);
+	// Detect edges using canny
+  	Canny( dep, threshold_output, thresh, thresh*2, 3 );
 	/// 对图像进行二值化
-	threshold(dep, threshold_output, thresh, 255, CV_THRESH_BINARY);
+	/*threshold(dep, threshold_output, thresh, 255, CV_THRESH_BINARY);*/
+	imshow("threshold_output",threshold_output);
+	//waitKey(0);
 	//mask_depth(src, threshold_output);
 	/// 寻找轮廓
 	findContours(threshold_output, contours, hierarchy, CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE, Point(0, 0));
@@ -90,14 +100,14 @@ int main(int argc, char* argv[])
 		Mat image(Size(w, h), CV_8UC3, (void*)depth.get_data(), Mat::AUTO_STEP);
 
 		vector<vector<Point> > result;
-		result = find_obstacle(image, 20, 255, 500);
+		result = find_obstacle(image, 30, 255, 500);
 
 		if (cvWaitKey(1) == 27)
 			break;
 	}
  
-	return EXIT_SUCCESS;
-}
+	return 0;
+}/*
 catch (const rs2::error & e)
 {
     std::cerr << "RealSense error calling " << e.get_failed_function() << "(" << e.get_failed_args() << "):\n    " << e.what() << std::endl;
@@ -107,4 +117,4 @@ catch (const std::exception& e)
 {
     std::cerr << e.what() << std::endl;
     return EXIT_FAILURE;
-}
+}*/

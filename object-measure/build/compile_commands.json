@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/ubuntu/github/realsense-install-linux/object-measure/build",
+  "command": "/usr/bin/c++   -DGLFW_DLL -isystem /usr/local/include -isystem /usr/local/include/opencv -I/home/ubuntu/github/realsense-install-linux/object-measure/. -I/home/ubuntu/github/realsense-install-linux/object-measure/build   -std=c++11 -pthread -lglut -lGLU -lGL -lGLEW -lX11 -lXxf86vm -lXrandr -lXi -lXmu   -fPIC -o CMakeFiles/object-measure.dir/object-measure.cpp.o -c /home/ubuntu/github/realsense-install-linux/object-measure/build/object-measure.cpp",
+  "file": "/home/ubuntu/github/realsense-install-linux/object-measure/build/object-measure.cpp"
+}
+]

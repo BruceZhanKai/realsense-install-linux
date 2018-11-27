@@ -19,16 +19,17 @@ endif()
 
 add_executable(object-detect object-detect.cpp)
 target_link_libraries(object-detect ${DEPENDENCIES})
-target_link_libraries( object-detect ${OpenCV_LIBS} )
-set_target_properties (object-detect PROPERTIES
-	FOLDER "Examples/OpenCV"
-)
+target_link_libraries(object-detect ${OpenCV_LIBS})
+target_link_libraries(object-detect realsense2)
+#set_target_properties (object-detect PROPERTIES
+#	FOLDER "Examples/OpenCV"
+#)
 
-install(
-	TARGETS
+#install(
+#	TARGETS
 
-	object-detect
+#	object-detect
 
-	RUNTIME DESTINATION
-	${CMAKE_INSTALL_PREFIX}/bin
-)
+#	RUNTIME DESTINATION
+#	${CMAKE_INSTALL_PREFIX}/bin
+#)

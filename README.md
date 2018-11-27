@@ -166,6 +166,13 @@ intel-realsense-dfu -b 002 -d 003 -f -i /home/ubuntu/Downloads/Signed_Image_UVC_
 ## TODO 
 
 
+### openGL install
+```
+sudo apt-get install build-essential libgl1-mesa-dev
+sudo apt-get install freeglut3-dev
+sudo apt-get install libglew-dev libsdl2-dev libsdl2-image-dev libglm-dev libfreetype6-dev
+```
+
 ### opencv3.4 install (better install before librealsense)
 
 - [opencv wrapper](https://github.com/IntelRealSense/librealsense/tree/master/wrappers/opencv#linux)
@@ -195,6 +202,44 @@ sudo make install
 ### C++ sample code 
 
 - [C++ sample code](https://github.com/IntelRealSense/librealsense/tree/master/examples)
+
+0. [object-detect](http://www.voidcn.com/article/p-waviwkwq-bgc.html)
+1. [ undefined reference to symbol 'pthread_create@@GLIBC_2.2.5'](https://github.com/facebook/Surround360/issues/3)
+- set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")
+2. [Building GLFW3 Application with CMAKE - GLFW_LIBRARIES doesnt set](https://stackoverflow.com/questions/34367424/building-glfw3-application-with-cmake-glfw-libraries-doesnt-set)
+3. undefined reference to symbol 'glOrtho'
+- set(CMAKE_CXX_FLAGS "-lGL -lGLU -lglfw3 -lX11 -lXxf86vm -lXrandr -lpthread -lXi")
+4. undefined reference to symbol 'glOrtho'
+```
+issue:
+/usr/bin/ld: CMakeFiles/object-measure.dir/object-measure.cpp.o: undefined reference to symbol 'glOrtho'
+/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libGL.so: error adding symbols: DSO missing from command line
+collect2: error: ld returned 1 exit status
+CMakeFiles/object-measure.dir/build.make:113: recipe for target 'object-measure' failed
+make[2]: *** [object-measure] Error 1
+CMakeFiles/Makefile2:67: recipe for target 'CMakeFiles/object-measure.dir/all' failed
+make[1]: *** [CMakeFiles/object-measure.dir/all] Error 2
+Makefile:83: recipe for target 'all' failed
+make: *** [all] Error 2
+```
+```
+solve1:
+write lines in cmakelists.txt  
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread -lglut -lGLU -lGL -lGLEW -lX11 -lXxf86vm -lXrandr -lXi -lXmu")
+target_link_libraries(object-measure ${DEPENDENCIES} ${OpenCV_LIBS} glfw realsense2 ${OPENGL_glu_LIBRARY})
+target_link_libraries(object-measure /usr/lib/x86_64-linux-gnu/libGL.so)
+```
+```
+solve2(fail):
+I had the same problem. I think the problem is that it's not linking to libGLU, so adding the following line
+-lGLU /usr/lib/x86_64-linux-gnu/libGLU.so
+in ScaViSLAM/svs_build/CMakeFiles/stereo_slam.dir/link.txt
+made it compile for me.
+
+```
+6. 
+- [D435 RGBD](https://www.cnblogs.com/gdut-gordon/p/9151740.html)
+- [D435 RGBD](https://blog.csdn.net/jacktoo123/article/details/72879370)
 
 
 ```

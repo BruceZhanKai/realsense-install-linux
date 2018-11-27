@@ -6,5 +6,5 @@ CXX_FLAGS =  -std=c++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -isystem /home/ubuntu/github/opencv/build -isystem /home/ubuntu/github/opencv/include -isystem /home/ubuntu/github/opencv/include/opencv -isystem /home/ubuntu/github/opencv/modules/core/include -isystem /home/ubuntu/github/opencv/modules/flann/include -isystem /home/ubuntu/github/opencv/modules/imgproc/include -isystem /home/ubuntu/github/opencv/modules/ml/include -isystem /home/ubuntu/github/opencv/modules/photo/include -isystem /home/ubuntu/github/opencv/modules/video/include -isystem /home/ubuntu/github/opencv/modules/dnn/include -isystem /home/ubuntu/github/opencv/modules/imgcodecs/include -isystem /home/ubuntu/github/opencv/modules/shape/include -isystem /home/ubuntu/github/opencv/modules/videoio/include -isystem /home/ubuntu/github/opencv/modules/highgui/include -isystem /home/ubuntu/github/opencv/modules/superres/include -isystem /home/ubuntu/github/opencv/modules/ts/include -isystem /home/ubuntu/github/opencv/modules/features2d/include -isystem /home/ubuntu/github/opencv/modules/calib3d/include -isystem /home/ubuntu/github/opencv/modules/objdetect/include -isystem /home/ubuntu/github/opencv/modules/stitching/include -isystem /home/ubuntu/github/opencv/modules/videostab/include 
+CXX_INCLUDES = -isystem /usr/local/include -isystem /usr/local/include/opencv 
 
