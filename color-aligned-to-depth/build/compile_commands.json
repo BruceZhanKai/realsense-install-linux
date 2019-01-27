@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/ubuntu/github/realsense-install-linux/color-aligned-to-depth/build",
+  "command": "/usr/bin/c++   -DGLFW_DLL -isystem /usr/local/include -isystem /usr/local/include/opencv -I/home/ubuntu/github/realsense-install-linux/color-aligned-to-depth/. -I/home/ubuntu/github/realsense-install-linux/color-aligned-to-depth/build   -std=c++11 -pthread -lglut -lGLU -lGL -lGLEW -lX11 -lXxf86vm -lXrandr -lXi -lXmu   -fPIC -o CMakeFiles/color-aligned-to-depth.dir/color-aligned-to-depth.cpp.o -c /home/ubuntu/github/realsense-install-linux/color-aligned-to-depth/build/color-aligned-to-depth.cpp",
+  "file": "/home/ubuntu/github/realsense-install-linux/color-aligned-to-depth/build/color-aligned-to-depth.cpp"
+}
+]

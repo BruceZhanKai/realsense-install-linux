@@ -1,0 +1,33 @@
+#  minimum required cmake version: 3.1.0
+cmake_minimum_required(VERSION 3.1.0)
+
+project(RealsenseColorAlignedToDepth)
+
+# Save the command line compile commands in the build output
+set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
+add_definitions(-fPIC)
+find_package( OpenCV REQUIRED )
+find_package(glfw3 REQUIRED)
+find_package(OpenGL REQUIRED)
+include_directories(${OpenCV_INCLUDE_DIRS} ${OPENGL_INCLUDE_DIR})
+include_directories(./)
+include_directories(build)
+include_directories(/usr/include) 
+link_directories(/usr/lib)
+link_directories(/usr/lib/x86_64-linux-gnu)
+include(CheckCXXCompilerFlag)
+CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
+CHECK_CXX_COMPILER_FLAG("-std=c++0x" COMPILER_SUPPORTS_CXX0X)
+if(COMPILER_SUPPORTS_CXX11)
+	#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c11")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread -lglut -lGLU -lGL -lGLEW -lX11 -lXxf86vm -lXrandr -lXi -lXmu")
+    #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread -lGL -lGLU -lglfw3 -lglut -lX11 -lXxf86vm -lXrandr -lXi")
+elseif(COMPILER_SUPPORTS_CXX0X)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+endif()
+
+add_executable(color-aligned-to-depth color-aligned-to-depth.cpp example.hpp stb_easy_font.h)
+#add_executable(color-aligned-to-depth color-aligned-to-depth.cpp)
+target_link_libraries(color-aligned-to-depth ${DEPENDENCIES} ${OpenCV_LIBS} glfw realsense2 ${OPENGL_glu_LIBRARY})
+#target_link_libraries(color-aligned-to-depth ${DEPENDENCIES} ${OpenCV_LIBS} ${GLFW3_LIBRARY} realsense2 ${OPENGL_glu_LIBRARY}) 
+TARGET_LINK_LIBRARIES(color-aligned-to-depth /usr/lib/x86_64-linux-gnu/libGL.so)

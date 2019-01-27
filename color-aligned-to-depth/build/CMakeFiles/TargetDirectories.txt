@@ -1,0 +1,3 @@
+/home/ubuntu/github/realsense-install-linux/color-aligned-to-depth/build/CMakeFiles/edit_cache.dir
+/home/ubuntu/github/realsense-install-linux/color-aligned-to-depth/build/CMakeFiles/color-aligned-to-depth.dir
+/home/ubuntu/github/realsense-install-linux/color-aligned-to-depth/build/CMakeFiles/rebuild_cache.dir
