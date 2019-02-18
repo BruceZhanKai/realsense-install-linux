@@ -307,8 +307,20 @@ $ cd opencv
 $ mkdir build
 $ cd build
 
+$ sudo cmake -D CMAKE_BUILD_TYPE=RELEASE \
+            -D CMAKE_INSTALL_PREFIX=/home/ubuntu/installation/OpenCV-3.4.4 \
+            -D INSTALL_C_EXAMPLES=ON \
+            -D INSTALL_PYTHON_EXAMPLES=ON \
+            -D WITH_TBB=ON \
+            -D WITH_V4L=ON \
+            -D OPENCV_PYTHON3_INSTALL_PATH=/usr/local/lib/python3.5/dist-packages \
+        -D WITH_QT=ON \
+        -D WITH_OPENGL=ON \
+        -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
+        -D BUILD_EXAMPLES=ON ..
+
 $ cmake -D CMAKE_BUILD_TYPE=RELEASE \
-            -D CMAKE_INSTALL_PREFIX=$cwd/installation/OpenCV-"$cvVersion" \
+            -D CMAKE_INSTALL_PREFIX=/usr/local \
             -D INSTALL_C_EXAMPLES=ON \
             -D INSTALL_PYTHON_EXAMPLES=ON \
             -D WITH_TBB=ON \
@@ -427,11 +439,36 @@ Cannot access /sys/class/video4linux
 
 
 
+## Alignment between Depth & Color
 
+- [D435深度图片对齐到彩色图片](https://blog.csdn.net/dieju8330/article/details/85300976)
 
+- [D435深度图片对齐到彩色图片-Eigen实现](https://blog.csdn.net/dieju8330/article/details/85346454)
 
+- [rs-align Sample](https://github.com/IntelRealSense/librealsense/tree/master/examples/align)
 
+## Get World Points from Image Pixels
 
+- [rs-measure Sample](https://github.com/IntelRealSense/librealsense/tree/master/examples/measure)
 
-
-
+```
+std::vector<cv::Point> CoordinateMapping(std::vector<cv::Point> polygon_image,const rs2_intrinsics& intr , const rs2::depth_frame& frame)
+{
+    //TO DO: get all points of world coordinate from all points of image coordinate.
+    //Use RealSense API.
+    std::vector<cv::Point> polygon_world;
+    float pixel[2], point[3];
+    cv::Point point_world;
+    for(int i = 0; i < polygon_image.size(); i++)
+    {
+        pixel[0]=polygon_image[i].x;
+        pixel[1]=polygon_image[i].y;
+        auto dist = frame.get_distance(pixel[0], pixel[1]);
+        rs2_deproject_pixel_to_point(point, &intr, pixel, dist);
+        point_world.x=point[0];
+        point_world.y=point[1];
+        polygon_world.push_back(point_world);
+    }
+    return polygon_world;    
+}
+```
