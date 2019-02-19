@@ -178,6 +178,7 @@ sudo apt-get install libglew-dev libsdl2-dev libsdl2-image-dev libglm-dev libfre
 ### opencv3.4 install (better install before librealsense)
 
 - [opencv wrapper](https://github.com/IntelRealSense/librealsense/tree/master/wrappers/opencv#linux)
+- [opencv 解决ippicv下载问题，离线:ippicv_2019_lnx_intel64_general_20180723.tgz](https://blog.csdn.net/ordream/article/details/84311697)
 
 1. bild `opencv` from source using the [official guide](https://docs.opencv.org/trunk/d7/d9f/tutorial_linux_install.html)
 > Please use `git checkout 3.4` to use version 3.4
@@ -207,6 +208,8 @@ $ sudo ldconfig
 ### reinstall opencv 3.4.4
 
 - [Install OpenCV 3.4.4 on Ubuntu 16.04 (C++ and Python)](https://www.learnopencv.com/install-opencv-3-4-4-on-ubuntu-16-04/)
+- [ubuntu16.04 安装opencv IPPICV 和 face_landmark_model.dat下载不下来的问题解决](https://blog.csdn.net/CSDN330/article/details/86747867)
+
 
 #### Step 0: Select OpenCV version to install
 ```
