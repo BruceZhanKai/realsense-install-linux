@@ -3,6 +3,13 @@
 ## reference
 
 ### librealsense
+
+
+0. KeyPoint
+- [windows下realsense数据处理基础（一）](https://blog.csdn.net/jepco1/article/details/80864022)
+- [C++读取realsense视频和手眼标定（opencv）](https://blog.csdn.net/Mr_zhuzj/article/details/84753138)
+
+
 1. offical
 - [github install](https://github.com/IntelRealSense/librealsense/blob/master/doc/installation.md)
 - [github distribution linux](https://github.com/IntelRealSense/librealsense/blob/development/doc/distribution_linux.md)
