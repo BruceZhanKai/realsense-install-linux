@@ -105,6 +105,8 @@ sudo apt-get install git libssl-dev libusb-1.0-0-dev pkg-config libgtk-3-dev
 sudo apt-get install libglfw3-dev
 sudo cp config/99-realsense-libusb.rules /etc/udev/rules.d/
 sudo udevadm control --reload-rules && udevadm trigger
+
+### choose the right shell script for your linux kernel version
 ./scripts/patch-ubuntu-kernel-4.16.sh
 cd ./scripts/
 ./patch-arch.sh
@@ -182,7 +184,7 @@ sudo apt-get install freeglut3-dev
 sudo apt-get install libglew-dev libsdl2-dev libsdl2-image-dev libglm-dev libfreetype6-dev
 ```
 
-### opencv3.4 install (better install before librealsense)
+### opencv3.4 install (better install before librealsense)(skip)
 
 - [opencv wrapper](https://github.com/IntelRealSense/librealsense/tree/master/wrappers/opencv#linux)
 - [opencv 解决ippicv下载问题，离线:ippicv_2019_lnx_intel64_general_20180723.tgz](https://blog.csdn.net/ordream/article/details/84311697)
